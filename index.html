@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<style>
+  .tbl {
+    background-color: coral;
+  }
+
+  .btn {
+    text-align: start;
+    border-radius: 10%;
+    background-color: darkseagreen;
+    font-size: x-large;
+  }
+</style>
+
+<head>
+  <script>
+    // function GetData() {
+
+    alert("Button clicked");
+    $(document).ready(function () {
+      // $.ajax({
+      //   url: 'data.txt',
+      //   dataType: 'text',
+      //   cors: true,
+      //   contentType: 'application/json',
+      //   secure: true,
+      //   headers: {
+      //     'Access-Control-Allow-Origin': '*',
+      //   },
+      //   beforeSend: function (xhr) {
+      //     debugger
+      //     xhr.setRequestHeader("Authorization", "Basic " + btoa(""));
+      //   },
+      //   success: function (data) {
+      //     // The 'data' variable contains the content of the text file
+      //     console.log(data);
+      //   },
+      //   error: function () {
+      //     console.log('Ex`rror: Unable to read the file.');
+      //   }
+      // });
+      GetData();
+    });
+
+    function GetData() {
+      $.ajax({
+        url: "data3.txt",
+        type: 'GET',
+        contentType: 'application/json',
+        dataType: 'jsonp',
+        cors: true,
+        secure: true,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+        },
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader("Authorization", "Basic " + btoa(""));
+        },
+        success: function (data) {
+          debugger
+          console.log("data");
+        }
+      })
+    }</script>
+</head>
+
+<body>
+
+  <h2
+    style="font-size: xx-large; font-family: Georgia, 'Times New Roman', Times, serif; color: indianred; text-align: center;">
+    Display Data In Table</h2>
+
+  <button class="btn" type="button" onclick="GetData()">Get</button><br /><br />
+
+  <table class="tbl" style="width:100% ">
+    <tr>
+      <th>Product Id</th>
+      <th>Product Name</th>
+      <th>Quantity</th>
+    </tr>
+  </table>
+
+
+</body>
+
+</html>
